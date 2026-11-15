@@ -1,0 +1,97 @@
+import { expect, test } from '@playwright/test';
+import { execFileSync } from 'node:child_process';
+import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+
+test('authored HTTP app: local search, private review import, actual recipient execution and simulated handoff', async ({ page }) => {
+  test.setTimeout(90_000);
+  const directory = await mkdtemp(join(tmpdir(), 'reproshare-application-browser-'));
+  try {
+    const cwd = resolve('.');
+    const profile = resolve('examples/heldout/profile.json');
+    const source = resolve('examples/heldout/fixtures/T01.json');
+    const script = resolve('scripts/reproshare-workflow.mjs');
+    const localResult = join(directory, 'private-results');
+    const exported = join(directory, 'reviewed-export');
+    execFileSync(process.execPath, [script, 'run', '--profile', profile, '--source', source, '--cwd', cwd, '--allow-command', '--out', localResult], { cwd, timeout: 60_000, stdio: 'pipe' });
+    execFileSync(process.execPath, [script, 'export', '--profile', profile, '--source', source, '--result', join(localResult, 'local-result.json'), '--cwd', cwd, '--reviewed-code', '--out', exported], { cwd, timeout: 20_000, stdio: 'pipe' });
+    const reviewJson = await readFile(join(exported, 'workflow-review.json'), 'utf8');
+    const review = JSON.parse(reviewJson);
+    expect(review.report.evidenceLevel).toBe('failure-reproduced');
+    await page.goto('/?demo=1');
+    await page.getByLabel('Import application handoff package').setInputFiles({ name: 'workflow-review.json', mimeType: 'application/json', buffer: Buffer.from(reviewJson) });
+    await expect(page.getByRole('heading', { name: 'Review the output', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Failure reproduced locally' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Run the actual received application test' })).toBeVisible();
+    await expect(page.locator('.disclosure-review')).toContainText('Original values are unavailable here');
+    await expect(page.getByRole('checkbox', { name: 'Show original values privately in this view' })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Choose a destination' })).toBeDisabled();
+
+    const recipient = join(directory, 'recipient');
+    await mkdir(recipient);
+    let pending = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download', exact: true }).click();
+    await (await pending).saveAs(join(recipient, 'fixture.json'));
+    await page.getByRole('tab', { name: 'Test harness' }).click();
+    pending = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download', exact: true }).click();
+    const runnerDownload = await pending;
+    expect(runnerDownload.suggestedFilename()).toBe('application-reproducer.mjs');
+    await runnerDownload.saveAs(join(recipient, 'application-reproducer.mjs'));
+    const runner = await readFile(join(recipient, 'application-reproducer.mjs'), 'utf8');
+    for (const key of ['sourceHash', 'configurationHash', 'oracleHash', 'evidenceHash']) expect(runner).not.toContain(review.report[key]);
+    const output = execFileSync(process.execPath, ['application-reproducer.mjs', '--allow-command', 'fixture.json'], { cwd: recipient, encoding: 'utf8', timeout: 20_000 });
+    const replay = JSON.parse(output);
+    expect(replay).toMatchObject({ kind: 'reproshare-recipient-result', scope: 'synthetic-only-local-execution', results: { affected: { outcome: 'fail', matchedExpected: true, failureSite: 'invoice-import.resolve-customer.v1' } } });
+
+    await page.getByRole('tab', { name: 'Report', exact: true }).click();
+    pending = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download', exact: true }).click();
+    await (await pending).saveAs(join(recipient, 'report.md'));
+    const report = await readFile(join(recipient, 'report.md'), 'utf8');
+    for (const key of ['sourceHash', 'configurationHash', 'oracleHash', 'evidenceHash']) expect(report).not.toContain(review.report[key]);
+    expect(report).toContain('node application-reproducer.mjs --allow-command fixture.json');
+    await page.locator('.local-verification .local-evidence-details > summary').click();
+    pending = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download public execution receipt' }).click();
+    await (await pending).saveAs(join(recipient, 'execution-receipt.json'));
+    const receipt = JSON.parse(await readFile(join(recipient, 'execution-receipt.json'), 'utf8'));
+    for (const key of ['sourceHash', 'configurationHash', 'oracleHash']) expect(receipt).not.toHaveProperty(key);
+    expect(receipt).toMatchObject({ evidenceLevel: 'failure-reproduced', assertionId: replay.assertionId });
+
+    await page.locator('.optional-brief > summary').click();
+    await expect(page.getByRole('checkbox', { name: 'Send the reviewed application metadata below' })).toBeDisabled();
+    await page.locator('.ai-metadata-preview > summary').click();
+    const aiMetadata = await page.locator('.ai-metadata-preview pre').innerText();
+    expect(aiMetadata).toContain(replay.assertionId);
+    expect(aiMetadata).toContain('failure-reproduced');
+    expect(JSON.parse(aiMetadata)).not.toHaveProperty('comparison');
+    expect(aiMetadata).not.toContain(JSON.parse(review.fixtureJson).customers[0].email);
+    expect(aiMetadata).not.toContain(JSON.parse(review.fixtureJson).customers[0].externalId);
+    for (const key of ['sourceHash', 'configurationHash', 'oracleHash', 'evidenceHash']) expect(aiMetadata).not.toContain(review.report[key]);
+    await expect(page.locator('.ai-brief-generator')).toContainText('unexecuted proposals');
+    await page.locator('.optional-brief > summary').click();
+
+    const proof = resolve('artifacts/judge-workflow/browser');
+    await mkdir(proof, { recursive: true });
+    await page.getByRole('tab', { name: 'Synthetic JSON' }).click();
+    await page.screenshot({ path: join(proof, 'application-review.png'), fullPage: true });
+    await writeFile(join(proof, 'recipient-result.json'), JSON.stringify(replay, null, 2));
+    await writeFile(join(proof, 'execution-receipt.json'), JSON.stringify(receipt, null, 2));
+    await page.getByRole('button', { name: 'Back to verification' }).click();
+    await expect(page.locator('.proof-summary')).not.toContainText('0 values replaced');
+    await expect(page.locator('.comparison-grid')).toHaveCount(0);
+    await page.getByRole('button', { name: 'Review the output' }).click();
+    await page.getByRole('checkbox', { name: 'I reviewed field names and structure.' }).check();
+    await page.getByRole('checkbox', { name: 'I reviewed the fixture, report and test.' }).check();
+    await page.getByRole('button', { name: 'Choose a destination' }).click();
+    await page.getByLabel('Destination project').selectOption('preview-dev');
+    await page.getByLabel('Issue type', { exact: false }).selectOption('preview-bug');
+    await page.getByLabel('Component').selectOption('importer');
+    await page.getByRole('button', { name: 'Review creation details' }).click();
+    await expect(page.getByRole('region', { name: 'Confirm issue creation' })).toContainText('Failure reproduced locally');
+    await page.getByRole('button', { name: 'Complete preview' }).click();
+    await expect(page.getByRole('heading', { name: 'No live issue created' })).toBeVisible();
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});

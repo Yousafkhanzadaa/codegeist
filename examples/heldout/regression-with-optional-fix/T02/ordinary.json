@@ -1,0 +1,34 @@
+{
+  "batchId": "c04d92f8",
+  "customers": [
+    {
+      "externalId": "2b5acfef",
+      "email": "caseaf2074369af7@example.test",
+      "name": "2fdc8fd3"
+    },
+    {
+      "externalId": "94be35c1",
+      "email": "casecdef3469e581@example.test",
+      "name": "aa7c6b98"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "653f59b0",
+      "customerExternalId": "2b5acfef",
+      "amountCents": 1,
+      "currency": "USD",
+      "dueDate": "2026-12-22",
+      "memo": "2cd0a358"
+    },
+    {
+      "invoiceId": "cfd944f3",
+      "customerExternalId": "94be35c1",
+      "amountCents": 1,
+      "currency": "EUR",
+      "dueDate": "2026-12-27",
+      "memo": "eff2bb42"
+    }
+  ],
+  "note": "6f1f43d8"
+}

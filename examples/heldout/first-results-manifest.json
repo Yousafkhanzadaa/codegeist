@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "scope": "Historical first outputs; integrity manifest is not independent execution attestation.",
+  "files": [
+    {
+      "path": "first-http-evaluation/T01/application-reproducer.mjs",
+      "sha256": "3051edb021613f0bc437d72acfd21e8c9a2a19f64749dafe66f7c7627ef6026c"
+    },
+    {
+      "path": "first-http-evaluation/T01/fixture.json",
+      "sha256": "d905a128c74a8b6a6e51da5df2a5a912af41c919b8abbf50b66e1248dbbabfc3"
+    },
+    {
+      "path": "first-http-evaluation/T01/oracle.json",
+      "sha256": "d253a595aeecd2e1396d5195532db249ba9a8724bf52ab42ad07c51cab4ffc4f"
+    },
+    {
+      "path": "first-http-evaluation/T01/ordinary.json",
+      "sha256": "dfa051dcb62220419da4a94feed73ba5ade2970a931ca562e758c7f31b3c7130"
+    },
+    {
+      "path": "first-http-evaluation/T01/private-verification-inputs.json",
+      "sha256": "f292b0a71a14aa99a2a4d1831a660aa340b4a4fb363dd731fd5a791fab73c3e3"
+    },
+    {
+      "path": "first-http-evaluation/T02/application-reproducer.mjs",
+      "sha256": "b20a8b4c760af6b76ef979fb71c438ac85948b96b3c923c97b4f6220682fba78"
+    },
+    {
+      "path": "first-http-evaluation/T02/fixture.json",
+      "sha256": "ea019436171e8b57b3766495d136bc733286c040c90b0f08d2a17c8df213f600"
+    },
+    {
+      "path": "first-http-evaluation/T02/oracle.json",
+      "sha256": "d253a595aeecd2e1396d5195532db249ba9a8724bf52ab42ad07c51cab4ffc4f"
+    },
+    {
+      "path": "first-http-evaluation/T02/ordinary.json",
+      "sha256": "61f4d305c5a3d364170be5bf5dac045d2eb54dc64a17a8fa15139b3cbb71d06d"
+    },
+    {
+      "path": "first-http-evaluation/T02/private-verification-inputs.json",
+      "sha256": "c22806aba5641dd144873649980c4ceb66cc62a2af598f28ee9d9e8e86deeeab"
+    },
+    {
+      "path": "first-http-evaluation/T03/application-reproducer.mjs",
+      "sha256": "c69c6223a6a28418ca0f36ec5b85425f47a6eaba7fe257cf4d4ef30fa8807f8b"
+    },
+    {
+      "path": "first-http-evaluation/T03/fixture.json",
+      "sha256": "cf36a2a84d61c241288c10defe7f9384d73c8f50a64e166bd7896282cdd966d5"
+    },
+    {
+      "path": "first-http-evaluation/T03/oracle.json",
+      "sha256": "d253a595aeecd2e1396d5195532db249ba9a8724bf52ab42ad07c51cab4ffc4f"
+    },
+    {
+      "path": "first-http-evaluation/T03/ordinary.json",
+      "sha256": "4fda4bd06abd32522c69742700d09d7a610c04ffa29eae1856039d15593d20f3"
+    },
+    {
+      "path": "first-http-evaluation/T03/private-verification-inputs.json",
+      "sha256": "134b274b76f33fc763bfe00eea2044769d23308ba015680b21e4214de49e17a2"
+    },
+    {
+      "path": "first-http-evaluation/evaluation.json",
+      "sha256": "71af1d1f601001dd0219010ddb8484dc9751c95cabdbfa559dda144a02a97fd5"
+    },
+    {
+      "path": "upstream-generic-evaluation/first-results/evaluation.json",
+      "sha256": "f48dd9c8997ad6d8d84ab674328cb37481af60d811912b174480ac01250a389c"
+    }
+  ]
+}

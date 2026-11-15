@@ -1,0 +1,9 @@
+{
+  "provider": "declared-local",
+  "repository": "example/reproshare",
+  "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "workflow": ".github/workflows/reproshare-public.yml",
+  "runId": "1",
+  "runAttempt": 1,
+  "jobId": "reproduce-public"
+}

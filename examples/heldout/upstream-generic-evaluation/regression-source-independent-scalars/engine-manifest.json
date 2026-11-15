@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "scope": "seen-task regression after source-independent numeric/date privacy fix; historical first results unchanged",
+  "files": [
+    {
+      "path": "engine-snapshot/workflow.mjs",
+      "sha256": "198d6027f8eaa2adfaa5f451bf25200c04c6691d2f97317d38b577b2fbd2d589"
+    },
+    {
+      "path": "engine-snapshot/protocol.mjs",
+      "sha256": "3156487d9da8f41b782a7a85b626b2201ded5f90207ded0d31f5cabe1a1a05bf"
+    },
+    {
+      "path": "engine-snapshot/json.mjs",
+      "sha256": "f27efea1292f0074f94749b303ae129bfc7d938af91d9c97ee648246c9b90f48"
+    },
+    {
+      "path": "engine-snapshot/input-contract.mjs",
+      "sha256": "778f3c6ac3192526bbc0f11a8f537a587bdcd9a2a3240e07b81869f066524242"
+    }
+  ]
+}

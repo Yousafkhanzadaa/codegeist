@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "id": "es-toolkit-deburr",
+  "title": "Generic engine capability on known public deburr case",
+  "contract": {
+    "version": 1,
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      }
+    }
+  },
+  "oracle": {
+    "version": 1,
+    "id": "es-toolkit-deburr",
+    "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+    "failureKind": "combining-mark-retained",
+    "affected": {
+      "revision": "282174c916c5ce125fe40eb5e952072cef2e97ce",
+      "command": [
+        "node",
+        "vendor/second-case/adapter.mjs",
+        "--revision",
+        "affected",
+        "{input}"
+      ],
+      "files": [
+        {
+          "path": "vendor/second-case/adapter.mjs",
+          "sha256": "3fccaba0fa0c34688058ce1fbd8e07602f65d116f5d873ff99d4a1f2252e718e"
+        },
+        {
+          "path": "vendor/second-case/provenance.json",
+          "sha256": "c3805a1f8a4cdbc810c65f9bbc1c96cbbded2635f670d2fac3687210bfff87ad"
+        },
+        {
+          "path": "vendor/second-case/affected/deburr.ts",
+          "sha256": "7a765e2899e576dc1ffb88788fc1d3b6ac28ce8e48f089ede1efe184f26bba8d"
+        },
+        {
+          "path": "vendor/second-case/affected/LICENSE",
+          "sha256": "51f3674294d988d89dbebd31273baaeb3c697a15482d9699b14d1fded2e132a7"
+        }
+      ]
+    },
+    "fixed": {
+      "revision": "4f5e0074714a3d1ed943dfb08cda77217e34ead2",
+      "command": [
+        "node",
+        "vendor/second-case/adapter.mjs",
+        "--revision",
+        "fixed",
+        "{input}"
+      ],
+      "files": [
+        {
+          "path": "vendor/second-case/adapter.mjs",
+          "sha256": "3fccaba0fa0c34688058ce1fbd8e07602f65d116f5d873ff99d4a1f2252e718e"
+        },
+        {
+          "path": "vendor/second-case/provenance.json",
+          "sha256": "c3805a1f8a4cdbc810c65f9bbc1c96cbbded2635f670d2fac3687210bfff87ad"
+        },
+        {
+          "path": "vendor/second-case/fixed/deburr.ts",
+          "sha256": "26d8c80c1d05f4e07c540009e2470860412b8aff79cb368412575410a518f5d7"
+        },
+        {
+          "path": "vendor/second-case/fixed/LICENSE",
+          "sha256": "51f3674294d988d89dbebd31273baaeb3c697a15482d9699b14d1fded2e132a7"
+        }
+      ]
+    },
+    "limits": {
+      "timeoutMs": 5000,
+      "maxOutputBytes": 16384
+    }
+  },
+  "budget": {
+    "maxRuns": 48,
+    "maxDurationMs": 45000,
+    "repeats": 2
+  }
+}

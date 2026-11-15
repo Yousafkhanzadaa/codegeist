@@ -1,0 +1,29 @@
+{
+  "customer": {
+    "name": "Fictional Private Customer",
+    "email": "maya@fictional-customer.example"
+  },
+  "orders": [
+    {
+      "unusual_reference": "9007199254740992",
+      "amount": 82.5,
+      "state": "imported",
+      "note": "Fictional private order alpha"
+    },
+    {
+      "unusual_reference": "9007199254740993",
+      "amount": 149.25,
+      "state": "imported",
+      "note": "Fictional private order beta"
+    }
+  ],
+  "delivery_log": [
+    { "correlation_token": "private-delivery-710", "attempt": 1 },
+    { "correlation_token": "private-delivery-710", "attempt": 2 },
+    { "correlation_token": "private-delivery-711", "attempt": 1 }
+  ],
+  "reference_catalog": [
+    { "opaque_reference": "private-caf\u00e9-482" },
+    { "opaque_reference": "private-cafe\u0301-482" }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "batchId": "469d5aa0",
+  "customers": [
+    {
+      "externalId": "0bcb0119",
+      "email": "casef12cf95e396d@example.test",
+      "name": "a2083a6d"
+    },
+    {
+      "externalId": "6102e2f4",
+      "email": "casef08ef920f3c2@example.test",
+      "name": "f5008ecc"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "9cc3e377",
+      "customerExternalId": "0bcb0119",
+      "amountCents": 10,
+      "currency": "USD",
+      "dueDate": "2007-01-09",
+      "memo": "62b187e8"
+    },
+    {
+      "invoiceId": "d657385c",
+      "customerExternalId": "6102e2f4",
+      "amountCents": 14,
+      "currency": "EUR",
+      "dueDate": "2049-09-06",
+      "memo": "77d77d1c"
+    }
+  ],
+  "note": "abaa40e0"
+}

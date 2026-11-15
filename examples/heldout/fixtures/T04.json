@@ -1,0 +1,34 @@
+{
+  "batchId": "fictional-delta-batch",
+  "customers": [
+    {
+      "externalId": "delta-customer-1-x",
+      "email": "delta.one@example.test",
+      "name": "Fictional delta One"
+    },
+    {
+      "externalId": "delta-customer-2-x",
+      "email": "delta.two@example.test",
+      "name": "Fictional delta Two"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "delta-invoice-1",
+      "customerExternalId": "delta-customer-1-x",
+      "amountCents": 129900,
+      "currency": "USD",
+      "dueDate": "2026-12-15",
+      "memo": "Fictional customer import note one"
+    },
+    {
+      "invoiceId": "delta-invoice-2",
+      "customerExternalId": "delta-customer-2-x",
+      "amountCents": 45900,
+      "currency": "EUR",
+      "dueDate": "2026-12-20",
+      "memo": "Fictional customer import note two"
+    }
+  ],
+  "note": "Fictional authorised evaluation input; no real customer data."
+}

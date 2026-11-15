@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+node_bin="$project_dir/.tools/node/bin"
+forge_cli="$project_dir/.tools/forge/node_modules/.bin/forge"
+
+if [ ! -x "$node_bin/node" ] || [ ! -f "$forge_cli" ]; then
+  echo "ReproShare's local Forge tools have not been installed yet." >&2
+  exit 1
+fi
+
+PATH="$node_bin:$PATH"
+export PATH
+exec "$forge_cli" "$@"

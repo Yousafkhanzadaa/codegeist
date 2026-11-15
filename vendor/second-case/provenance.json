@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/toss/es-toolkit",
+  "bugReportAndFixUrl": "https://github.com/toss/es-toolkit/pull/1807",
+  "affectedRevision": "282174c916c5ce125fe40eb5e952072cef2e97ce",
+  "fixedRevision": "4f5e0074714a3d1ed943dfb08cda77217e34ead2",
+  "fixMerged": true,
+  "fixMergedOn": "2026-06-27",
+  "sourceStatusCheckedOn": "2026-11-15",
+  "license": "MIT",
+  "upstreamEntryPoint": "src/string/deburr.ts:deburr",
+  "runtimeDependencies": [],
+  "files": {
+    "affected/deburr.ts": {
+      "sha256": "7a765e2899e576dc1ffb88788fc1d3b6ac28ce8e48f089ede1efe184f26bba8d",
+      "gitBlobSha1": "e059e8e5d17a925dae4ba9fd2bcd7ce80e38b399",
+      "bytes": 1424,
+      "sourceUrl": "https://github.com/toss/es-toolkit/blob/282174c916c5ce125fe40eb5e952072cef2e97ce/src/string/deburr.ts"
+    },
+    "affected/LICENSE": {
+      "sha256": "51f3674294d988d89dbebd31273baaeb3c697a15482d9699b14d1fded2e132a7",
+      "gitBlobSha1": "69dc6a701d90767cfc779cc7c856268d4d3c593e",
+      "bytes": 1077,
+      "sourceUrl": "https://github.com/toss/es-toolkit/blob/282174c916c5ce125fe40eb5e952072cef2e97ce/LICENSE"
+    },
+    "fixed/deburr.ts": {
+      "sha256": "26d8c80c1d05f4e07c540009e2470860412b8aff79cb368412575410a518f5d7",
+      "gitBlobSha1": "f651fbfb3f9ad2fb45f86ddc5b3ab62fff6d216d",
+      "bytes": 1490,
+      "sourceUrl": "https://github.com/toss/es-toolkit/blob/4f5e0074714a3d1ed943dfb08cda77217e34ead2/src/string/deburr.ts"
+    },
+    "fixed/LICENSE": {
+      "sha256": "51f3674294d988d89dbebd31273baaeb3c697a15482d9699b14d1fded2e132a7",
+      "gitBlobSha1": "69dc6a701d90767cfc779cc7c856268d4d3c593e",
+      "bytes": 1077,
+      "sourceUrl": "https://github.com/toss/es-toolkit/blob/4f5e0074714a3d1ed943dfb08cda77217e34ead2/LICENSE"
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "id": "hermes-integer-coercion",
+  "title": "Generic engine capability on known public hermes case",
+  "contract": {
+    "version": 1,
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "calls"
+      ],
+      "properties": {
+        "calls": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "chat_id"
+            ],
+            "properties": {
+              "chat_id": {
+                "type": "string",
+                "format": "integer-string",
+                "minLength": 16,
+                "maxLength": 19,
+                "minimum": "1000000000000000",
+                "maximum": "9223372036854775807"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "oracle": {
+    "version": 1,
+    "id": "hermes-integer-coercion",
+    "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+    "failureKind": "integer-precision-collision",
+    "affected": {
+      "revision": "c79e3fd0baf41c0adda616b73153eeaa8a4b8231",
+      "command": [
+        "node",
+        "vendor/hermes/oracle-adapter.mjs",
+        "before",
+        "{input}"
+      ],
+      "files": [
+        {
+          "path": "vendor/hermes/oracle-adapter.mjs",
+          "sha256": "9f9720a7b768d43fb7aab76fe43cc0c225e751cdee1dddc9f5fffeabfb174035"
+        },
+        {
+          "path": "scripts/hermes-adapter.py",
+          "sha256": "fbd7badf678bbefe53fdb17a161adaa6f2762a4ff5014f6e7330809339f184e2"
+        },
+        {
+          "path": "vendor/hermes/provenance.json",
+          "sha256": "ccb720a33cd35e546198c9bd08fc80bea373fee83ec39e7f6ca5e9cfaa3a6206"
+        },
+        {
+          "path": "vendor/hermes/before/LICENSE",
+          "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6"
+        },
+        {
+          "path": "vendor/hermes/before/model_tools.py",
+          "sha256": "2e0e2ac63392509028726665e23e91d35baa119f482a078c0d558843e4588717"
+        },
+        {
+          "path": "vendor/hermes/before/toolsets.py",
+          "sha256": "4b4c011e824146354d490aa97a05027d83364e6babe7f136a72e8b4496dfedd2"
+        },
+        {
+          "path": "vendor/hermes/before/tools/__init__.py",
+          "sha256": "f20d844ea0b00d501fe11de2f44768277257d0fa929bda2c39d7c08cc445a4c7"
+        },
+        {
+          "path": "vendor/hermes/before/tools/registry.py",
+          "sha256": "1fff28948e5714763c26279f40a0188b657243942f8ad8e157a672c453515aef"
+        }
+      ]
+    },
+    "fixed": {
+      "revision": "097c9185aeb69cc302f660f1d5c8553e4fcbaedb",
+      "command": [
+        "node",
+        "vendor/hermes/oracle-adapter.mjs",
+        "fixed",
+        "{input}"
+      ],
+      "files": [
+        {
+          "path": "vendor/hermes/oracle-adapter.mjs",
+          "sha256": "9f9720a7b768d43fb7aab76fe43cc0c225e751cdee1dddc9f5fffeabfb174035"
+        },
+        {
+          "path": "scripts/hermes-adapter.py",
+          "sha256": "fbd7badf678bbefe53fdb17a161adaa6f2762a4ff5014f6e7330809339f184e2"
+        },
+        {
+          "path": "vendor/hermes/provenance.json",
+          "sha256": "ccb720a33cd35e546198c9bd08fc80bea373fee83ec39e7f6ca5e9cfaa3a6206"
+        },
+        {
+          "path": "vendor/hermes/fixed/LICENSE",
+          "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6"
+        },
+        {
+          "path": "vendor/hermes/fixed/model_tools.py",
+          "sha256": "498604c586ae533782052976a13baa6a87102c48d1bba73551cfabb63e4c95c0"
+        },
+        {
+          "path": "vendor/hermes/fixed/toolsets.py",
+          "sha256": "4b4c011e824146354d490aa97a05027d83364e6babe7f136a72e8b4496dfedd2"
+        },
+        {
+          "path": "vendor/hermes/fixed/tools/__init__.py",
+          "sha256": "f20d844ea0b00d501fe11de2f44768277257d0fa929bda2c39d7c08cc445a4c7"
+        },
+        {
+          "path": "vendor/hermes/fixed/tools/registry.py",
+          "sha256": "1fff28948e5714763c26279f40a0188b657243942f8ad8e157a672c453515aef"
+        }
+      ]
+    },
+    "limits": {
+      "timeoutMs": 5000,
+      "maxOutputBytes": 16384
+    }
+  },
+  "budget": {
+    "maxRuns": 48,
+    "maxDurationMs": 45000,
+    "repeats": 2
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "batchId": "fictional-foxtrot-batch",
+  "customers": [
+    {
+      "externalId": "foxtrot-customer-1-xxxxxxxxxxxxxxxxxxxxx",
+      "email": "foxtrot.one@example.test",
+      "name": "Fictional foxtrot One"
+    },
+    {
+      "externalId": "foxtrot-customer-2-xxxxxxxxxxxxxxxxxxxxx",
+      "email": "foxtrot.two@example.test",
+      "name": "Fictional foxtrot Two"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "foxtrot-invoice-1",
+      "customerExternalId": "foxtrot-customer-1-xxxxxxxxxxxxxxxxxxxxx",
+      "amountCents": 129900,
+      "currency": "USD",
+      "dueDate": "2026-12-15",
+      "memo": "Fictional customer import note one"
+    },
+    {
+      "invoiceId": "foxtrot-invoice-2",
+      "customerExternalId": "foxtrot-customer-2-xxxxxxxxxxxxxxxxxxxxx",
+      "amountCents": 45900,
+      "currency": "EUR",
+      "dueDate": "2026-12-20",
+      "memo": "Fictional customer import note two"
+    }
+  ],
+  "note": "Fictional authorised evaluation input; no real customer data.",
+  "caseToken": "fictional-heldout-authorisation-v1"
+}

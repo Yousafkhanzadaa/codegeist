@@ -1,0 +1,470 @@
+{
+  "version": 1,
+  "kind": "reproshare-agent-authored-acceptance-evaluation",
+  "startedAt": "2026-11-15T13:10:34.490Z",
+  "scope": "authored-local-http-application; no independent-human-trial; no upstream-vulnerability-claim",
+  "mode": "first-seen-engine-snapshot",
+  "engineHash": "0c31d8017533e83032215001d8b68e76eaf673b2dbe86dbc8dd43b5d2ebc63f1",
+  "engineAtTaskFreeze": "0c31d8017533e83032215001d8b68e76eaf673b2dbe86dbc8dd43b5d2ebc63f1",
+  "freezeHash": "922b9cf82cbcb6b83a54b4bef38480aa457a3d2d15b8a857bfb5fd82433bfb53",
+  "runtime": "v24.22.3",
+  "profileReuse": "T01,T02,T03 use byte-identical profile.json without adapter or generator edits",
+  "tasks": [
+    {
+      "id": "T01",
+      "expected": "reproduce",
+      "sourceFixtureHash": "14b0d35b889ba94a7324858f662ac99c7ef7842294aca5637004684e88b8662d",
+      "profileHash": "bc9c349810792a7389bff011f3d99d4733d7a5cc80bf584451bc878f07333eaf",
+      "attempts": [
+        {
+          "kind": "bounded-search",
+          "outcome": "reproduced",
+          "searchSummary": {
+            "version": 1,
+            "kind": "reproshare-search-summary",
+            "runs": 20,
+            "candidates": 2,
+            "invalidCandidates": 0,
+            "differentOutcomes": 1,
+            "minimizationChecks": 9,
+            "removedParts": 6,
+            "elapsedMs": 1355,
+            "originalBytes": 954,
+            "fixtureBytes": 398,
+            "scope": "bounded-local-search-not-global-minimum",
+            "stoppedByBudget": false,
+            "decisions": [
+              "changed-values-preserved-declared-failure"
+            ],
+            "disclosures": [
+              "Object keys, required structure, public constants and selected constraints remain visible.",
+              "Boolean inversion is reversible; changed booleans do not hide their original value.",
+              "Matching declared assertion/site is bounded failure evidence, not proof of identical root cause."
+            ]
+          }
+        },
+        {
+          "kind": "pre-fix-verification",
+          "outcome": "verified"
+        },
+        {
+          "kind": "recipient-synthetic-only-replay",
+          "outcome": "reproduced"
+        }
+      ],
+      "passed": true,
+      "originalApplication": {
+        "affectedStatus": 500,
+        "fixedStatus": 201,
+        "affectedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "fail",
+          "failureKind": "valid-import-reference-resolution",
+          "failureSite": "invoice-import.resolve-customer.v1"
+        },
+        "fixedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "pass"
+        }
+      },
+      "privateScalarOverlap": false,
+      "reproduction": {
+        "verdict": "verified",
+        "evidenceLevel": "failure-reproduced",
+        "ordinaryControl": "hides-failure",
+        "failures": [],
+        "matrix": {
+          "original": {
+            "outcome": "fail",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "failureKind": "valid-import-reference-resolution",
+            "failureSite": "invoice-import.resolve-customer.v1",
+            "matchedExpected": true
+          },
+          "ordinary": {
+            "outcome": "pass",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "matchedExpected": true
+          },
+          "synthetic": {
+            "outcome": "fail",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "failureKind": "valid-import-reference-resolution",
+            "failureSite": "invoice-import.resolve-customer.v1",
+            "matchedExpected": true
+          }
+        }
+      },
+      "recipient": {
+        "exitCode": 0,
+        "runnerHash": "3051edb021613f0bc437d72acfd21e8c9a2a19f64749dafe66f7c7627ef6026c",
+        "result": {
+          "version": 1,
+          "kind": "reproshare-recipient-result",
+          "profileId": "heldout-invoice-import-v1",
+          "fixtureHash": "d905a128c74a8b6a6e51da5df2a5a912af41c919b8abbf50b66e1248dbbabfc3",
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "results": {
+            "affected": {
+              "outcome": "fail",
+              "assertionId": "invoice-import.preserves-customer-reference.v1",
+              "failureKind": "valid-import-reference-resolution",
+              "failureSite": "invoice-import.resolve-customer.v1",
+              "matchedExpected": true
+            }
+          },
+          "scope": "synthetic-only-local-execution"
+        },
+        "privateOriginalAvailable": false,
+        "scope": "fresh temporary embedded application; no original fixture passed to runner"
+      },
+      "elapsedMs": 1688
+    },
+    {
+      "id": "T02",
+      "expected": "reproduce",
+      "sourceFixtureHash": "f0c0e731abe95d990d63934750d4fe53fec3d960dab65add47c94f580f169f09",
+      "profileHash": "bc9c349810792a7389bff011f3d99d4733d7a5cc80bf584451bc878f07333eaf",
+      "attempts": [
+        {
+          "kind": "bounded-search",
+          "outcome": "reproduced",
+          "searchSummary": {
+            "version": 1,
+            "kind": "reproshare-search-summary",
+            "runs": 20,
+            "candidates": 2,
+            "invalidCandidates": 0,
+            "differentOutcomes": 1,
+            "minimizationChecks": 9,
+            "removedParts": 6,
+            "elapsedMs": 1369,
+            "originalBytes": 1014,
+            "fixtureBytes": 428,
+            "scope": "bounded-local-search-not-global-minimum",
+            "stoppedByBudget": false,
+            "decisions": [
+              "changed-values-preserved-declared-failure"
+            ],
+            "disclosures": [
+              "Object keys, required structure, public constants and selected constraints remain visible.",
+              "Boolean inversion is reversible; changed booleans do not hide their original value.",
+              "Matching declared assertion/site is bounded failure evidence, not proof of identical root cause."
+            ]
+          }
+        },
+        {
+          "kind": "pre-fix-verification",
+          "outcome": "verified"
+        },
+        {
+          "kind": "recipient-synthetic-only-replay",
+          "outcome": "reproduced"
+        }
+      ],
+      "passed": true,
+      "originalApplication": {
+        "affectedStatus": 500,
+        "fixedStatus": 201,
+        "affectedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "fail",
+          "failureKind": "valid-import-reference-resolution",
+          "failureSite": "invoice-import.resolve-customer.v1"
+        },
+        "fixedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "pass"
+        }
+      },
+      "privateScalarOverlap": false,
+      "reproduction": {
+        "verdict": "verified",
+        "evidenceLevel": "failure-reproduced",
+        "ordinaryControl": "hides-failure",
+        "failures": [],
+        "matrix": {
+          "original": {
+            "outcome": "fail",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "failureKind": "valid-import-reference-resolution",
+            "failureSite": "invoice-import.resolve-customer.v1",
+            "matchedExpected": true
+          },
+          "ordinary": {
+            "outcome": "pass",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "matchedExpected": true
+          },
+          "synthetic": {
+            "outcome": "fail",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "failureKind": "valid-import-reference-resolution",
+            "failureSite": "invoice-import.resolve-customer.v1",
+            "matchedExpected": true
+          }
+        }
+      },
+      "recipient": {
+        "exitCode": 0,
+        "runnerHash": "b20a8b4c760af6b76ef979fb71c438ac85948b96b3c923c97b4f6220682fba78",
+        "result": {
+          "version": 1,
+          "kind": "reproshare-recipient-result",
+          "profileId": "heldout-invoice-import-v1",
+          "fixtureHash": "ea019436171e8b57b3766495d136bc733286c040c90b0f08d2a17c8df213f600",
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "results": {
+            "affected": {
+              "outcome": "fail",
+              "assertionId": "invoice-import.preserves-customer-reference.v1",
+              "failureKind": "valid-import-reference-resolution",
+              "failureSite": "invoice-import.resolve-customer.v1",
+              "matchedExpected": true
+            }
+          },
+          "scope": "synthetic-only-local-execution"
+        },
+        "privateOriginalAvailable": false,
+        "scope": "fresh temporary embedded application; no original fixture passed to runner"
+      },
+      "elapsedMs": 1760
+    },
+    {
+      "id": "T03",
+      "expected": "reproduce",
+      "sourceFixtureHash": "0b3bd550da7904fb4472db421d80c210df985e3a92713d6b42f4829af7eafab2",
+      "profileHash": "bc9c349810792a7389bff011f3d99d4733d7a5cc80bf584451bc878f07333eaf",
+      "attempts": [
+        {
+          "kind": "bounded-search",
+          "outcome": "reproduced",
+          "searchSummary": {
+            "version": 1,
+            "kind": "reproshare-search-summary",
+            "runs": 20,
+            "candidates": 2,
+            "invalidCandidates": 0,
+            "differentOutcomes": 1,
+            "minimizationChecks": 9,
+            "removedParts": 6,
+            "elapsedMs": 1345,
+            "originalBytes": 1092,
+            "fixtureBytes": 464,
+            "scope": "bounded-local-search-not-global-minimum",
+            "stoppedByBudget": false,
+            "decisions": [
+              "changed-values-preserved-declared-failure"
+            ],
+            "disclosures": [
+              "Object keys, required structure, public constants and selected constraints remain visible.",
+              "Boolean inversion is reversible; changed booleans do not hide their original value.",
+              "Matching declared assertion/site is bounded failure evidence, not proof of identical root cause."
+            ]
+          }
+        },
+        {
+          "kind": "pre-fix-verification",
+          "outcome": "verified"
+        },
+        {
+          "kind": "recipient-synthetic-only-replay",
+          "outcome": "reproduced"
+        }
+      ],
+      "passed": true,
+      "originalApplication": {
+        "affectedStatus": 500,
+        "fixedStatus": 201,
+        "affectedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "fail",
+          "failureKind": "valid-import-reference-resolution",
+          "failureSite": "invoice-import.resolve-customer.v1"
+        },
+        "fixedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "pass"
+        }
+      },
+      "privateScalarOverlap": false,
+      "reproduction": {
+        "verdict": "verified",
+        "evidenceLevel": "failure-reproduced",
+        "ordinaryControl": "hides-failure",
+        "failures": [],
+        "matrix": {
+          "original": {
+            "outcome": "fail",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "failureKind": "valid-import-reference-resolution",
+            "failureSite": "invoice-import.resolve-customer.v1",
+            "matchedExpected": true
+          },
+          "ordinary": {
+            "outcome": "pass",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "matchedExpected": true
+          },
+          "synthetic": {
+            "outcome": "fail",
+            "assertionId": "invoice-import.preserves-customer-reference.v1",
+            "failureKind": "valid-import-reference-resolution",
+            "failureSite": "invoice-import.resolve-customer.v1",
+            "matchedExpected": true
+          }
+        }
+      },
+      "recipient": {
+        "exitCode": 0,
+        "runnerHash": "c69c6223a6a28418ca0f36ec5b85425f47a6eaba7fe257cf4d4ef30fa8807f8b",
+        "result": {
+          "version": 1,
+          "kind": "reproshare-recipient-result",
+          "profileId": "heldout-invoice-import-v1",
+          "fixtureHash": "cf36a2a84d61c241288c10defe7f9384d73c8f50a64e166bd7896282cdd966d5",
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "results": {
+            "affected": {
+              "outcome": "fail",
+              "assertionId": "invoice-import.preserves-customer-reference.v1",
+              "failureKind": "valid-import-reference-resolution",
+              "failureSite": "invoice-import.resolve-customer.v1",
+              "matchedExpected": true
+            }
+          },
+          "scope": "synthetic-only-local-execution"
+        },
+        "privateOriginalAvailable": false,
+        "scope": "fresh temporary embedded application; no original fixture passed to runner"
+      },
+      "elapsedMs": 1671
+    },
+    {
+      "id": "T04",
+      "expected": "refuse-original-passes",
+      "sourceFixtureHash": "3058484ec2f3eae78c7498e33d20e3822959a4e693f44b3bd0af100b1cb0f778",
+      "profileHash": "bc9c349810792a7389bff011f3d99d4733d7a5cc80bf584451bc878f07333eaf",
+      "attempts": [
+        {
+          "kind": "pipeline",
+          "outcome": "refused-or-failed",
+          "code": "original-failure-not-stable",
+          "lastProgress": {
+            "runs": 1,
+            "candidates": 0,
+            "invalidCandidates": 0,
+            "differentOutcomes": 0,
+            "minimizationChecks": 0,
+            "removedParts": 0,
+            "phase": "running",
+            "elapsedMs": 0
+          }
+        }
+      ],
+      "passed": true,
+      "originalApplication": {
+        "affectedStatus": 201,
+        "fixedStatus": 201,
+        "affectedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "pass"
+        },
+        "fixedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "pass"
+        }
+      },
+      "elapsedMs": 75
+    },
+    {
+      "id": "T05",
+      "expected": "refuse-invalid-source",
+      "sourceFixtureHash": "887b0dcb9f2b8d4e7dc31f51d9d98ca692118324ee48b992c59bb07ebfbb13a6",
+      "profileHash": "bc9c349810792a7389bff011f3d99d4733d7a5cc80bf584451bc878f07333eaf",
+      "attempts": [
+        {
+          "kind": "pipeline",
+          "outcome": "refused-or-failed",
+          "code": "original-input-invalid"
+        }
+      ],
+      "passed": true,
+      "originalApplication": {
+        "affectedStatus": 422,
+        "fixedStatus": 422,
+        "affectedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "fail",
+          "failureKind": "application-input-rejected"
+        },
+        "fixedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "fail",
+          "failureKind": "application-input-rejected"
+        }
+      },
+      "elapsedMs": 6
+    },
+    {
+      "id": "T06",
+      "expected": "refuse-no-safe-variant",
+      "sourceFixtureHash": "7181710e7a1cb6fa8fda9fcde3441189f76ded1c57ebaceca2fe8aee364d19af",
+      "profileHash": "a728744b7bdbc518518663218056920afc9d8cd0aba4af695df116b45185dbbd",
+      "attempts": [
+        {
+          "kind": "pipeline",
+          "outcome": "refused-or-failed",
+          "code": "no-safe-failing-variant",
+          "lastProgress": {
+            "runs": 34,
+            "candidates": 32,
+            "invalidCandidates": 0,
+            "differentOutcomes": 31,
+            "minimizationChecks": 0,
+            "removedParts": 0,
+            "phase": "running",
+            "elapsedMs": 2680
+          }
+        }
+      ],
+      "passed": true,
+      "originalApplication": {
+        "affectedStatus": 500,
+        "fixedStatus": 201,
+        "affectedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "fail",
+          "failureKind": "valid-import-reference-resolution",
+          "failureSite": "invoice-import.resolve-customer.v1"
+        },
+        "fixedAssertion": {
+          "version": 1,
+          "assertionId": "invoice-import.preserves-customer-reference.v1",
+          "outcome": "pass"
+        }
+      },
+      "elapsedMs": 2761
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "expectedOutcomes": 6,
+    "positiveTasks": 3,
+    "positiveCompleted": 3,
+    "negativeTasks": 3,
+    "negativeCorrectRefusals": 3
+  },
+  "completedAt": "2026-11-15T13:10:42.456Z"
+}

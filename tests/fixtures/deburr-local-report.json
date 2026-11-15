@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "kind": "reproshare-local-verification",
+  "sourceKind": "provided-local-source",
+  "configurationHash": "cd26c8da8f1158c5641a5c80af83e1730f5dc9638865dd3ba810a15002d6e5d7",
+  "sourceHash": "fb8a20cee09c8bdbba75d824964b92d2d90c5f38697b132143f9f99ab67e867d",
+  "ordinaryHash": "c2de33d9f1f55578cce8f3ba1d1ed15039e706ee4743abc5aea10093b2446e19",
+  "fixtureHash": "cf46df4e9a75071176b7325e3aac3f81a7b570bb08e3b4982365cfc137e8b14b",
+  "contractHash": "63162d811db26ac8ebaff5122ae33f5b2ce3dd7ded48be4327ce8aa58d8e4f48",
+  "oracleHash": "81db83f23a70c5312a84ad156d57d8b635eed690c8ddd8c01a549bd95f49997b",
+  "runner": {
+    "revision": "reproshare-local-oracle-v1",
+    "sha256": "49616577279efe818c87ec078a8ea4042068931ae2b78938964981f6f8cb2ef2",
+    "nodeVersion": "v24.22.3"
+  },
+  "adapters": {
+    "affected": {
+      "revision": "282174c916c5ce125fe40eb5e952072cef2e97ce",
+      "files": [
+        {
+          "path": "vendor/second-case/adapter.mjs",
+          "sha256": "3fccaba0fa0c34688058ce1fbd8e07602f65d116f5d873ff99d4a1f2252e718e"
+        },
+        {
+          "path": "vendor/second-case/provenance.json",
+          "sha256": "c3805a1f8a4cdbc810c65f9bbc1c96cbbded2635f670d2fac3687210bfff87ad"
+        },
+        {
+          "path": "vendor/second-case/affected/deburr.ts",
+          "sha256": "7a765e2899e576dc1ffb88788fc1d3b6ac28ce8e48f089ede1efe184f26bba8d"
+        },
+        {
+          "path": "vendor/second-case/affected/LICENSE",
+          "sha256": "51f3674294d988d89dbebd31273baaeb3c697a15482d9699b14d1fded2e132a7"
+        }
+      ]
+    },
+    "fixed": {
+      "revision": "4f5e0074714a3d1ed943dfb08cda77217e34ead2",
+      "files": [
+        {
+          "path": "vendor/second-case/adapter.mjs",
+          "sha256": "3fccaba0fa0c34688058ce1fbd8e07602f65d116f5d873ff99d4a1f2252e718e"
+        },
+        {
+          "path": "vendor/second-case/provenance.json",
+          "sha256": "c3805a1f8a4cdbc810c65f9bbc1c96cbbded2635f670d2fac3687210bfff87ad"
+        },
+        {
+          "path": "vendor/second-case/fixed/deburr.ts",
+          "sha256": "26d8c80c1d05f4e07c540009e2470860412b8aff79cb368412575410a518f5d7"
+        },
+        {
+          "path": "vendor/second-case/fixed/LICENSE",
+          "sha256": "51f3674294d988d89dbebd31273baaeb3c697a15482d9699b14d1fded2e132a7"
+        }
+      ]
+    }
+  },
+  "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+  "failureKind": "combining-mark-retained",
+  "inputValidity": {
+    "original": true,
+    "ordinary": true,
+    "synthetic": true
+  },
+  "matrix": {
+    "original": {
+      "outcome": "fail",
+      "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+      "failureKind": "combining-mark-retained",
+      "matchedExpected": true
+    },
+    "ordinary": {
+      "outcome": "pass",
+      "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+      "matchedExpected": true
+    },
+    "synthetic": {
+      "outcome": "fail",
+      "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+      "failureKind": "combining-mark-retained",
+      "matchedExpected": true
+    },
+    "fixedOriginal": {
+      "outcome": "pass",
+      "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+      "matchedExpected": true
+    },
+    "fixedOrdinary": {
+      "outcome": "pass",
+      "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+      "matchedExpected": true
+    },
+    "fixedSynthetic": {
+      "outcome": "pass",
+      "assertionId": "es-toolkit.deburr.removes-supported-combining-marks.v1",
+      "matchedExpected": true
+    }
+  },
+  "verdict": "verified",
+  "failures": [],
+  "scope": "local-self-report-declared-files-only",
+  "evidenceHash": "653d697ce4c42d47f375142400a83067ebf71de85f4b31ecb64414323544243c"
+}

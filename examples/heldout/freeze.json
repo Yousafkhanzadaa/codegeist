@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "frozenAt": "2026-11-15",
+  "taskSelection": "Truncation defect selected before inspecting workflow internals; task files frozen before sharing with the generator author. Same workspace is not a blinded human study.",
+  "engineAtFreeze": {
+    "path": "local/workflow.mjs",
+    "sha256": "0c31d8017533e83032215001d8b68e76eaf673b2dbe86dbc8dd43b5d2ebc63f1"
+  },
+  "files": [
+    {
+      "path": "app.mjs",
+      "sha256": "e6d8f1796e1c7ececf94617c4d0569e1796308df65eba6430678872f923d516b"
+    },
+    {
+      "path": "adapter.mjs",
+      "sha256": "ec2b3b35b48dff207c3eec3ff937ec81436ae15362283699331f8c8739cb809e"
+    },
+    {
+      "path": "profile.json",
+      "sha256": "4e05326b6b3dd6d762e479a1a585be135eb691935aa351f920c91c7684f71f6d"
+    },
+    {
+      "path": "profile-fixed.json",
+      "sha256": "bf66bf397ce1a18a3fdb0b93e1cf41e3c483d7030bc1ff1252b2890df0b8abb3"
+    },
+    {
+      "path": "profile-private-prerequisite.json",
+      "sha256": "290169604dd67933327ae164acf71e78970675c45ac0c77a7b63f0166a244553"
+    },
+    {
+      "path": "tasks.json",
+      "sha256": "1ce8b0edf3927e2ba2545d7252c77694cb7256702c1561af928a5b85ff04238e"
+    },
+    {
+      "path": "fixtures/T01.json",
+      "sha256": "14b0d35b889ba94a7324858f662ac99c7ef7842294aca5637004684e88b8662d"
+    },
+    {
+      "path": "fixtures/T02.json",
+      "sha256": "f0c0e731abe95d990d63934750d4fe53fec3d960dab65add47c94f580f169f09"
+    },
+    {
+      "path": "fixtures/T03.json",
+      "sha256": "0b3bd550da7904fb4472db421d80c210df985e3a92713d6b42f4829af7eafab2"
+    },
+    {
+      "path": "fixtures/T04.json",
+      "sha256": "3058484ec2f3eae78c7498e33d20e3822959a4e693f44b3bd0af100b1cb0f778"
+    },
+    {
+      "path": "fixtures/T05.json",
+      "sha256": "887b0dcb9f2b8d4e7dc31f51d9d98ca692118324ee48b992c59bb07ebfbb13a6"
+    },
+    {
+      "path": "fixtures/T06.json",
+      "sha256": "7181710e7a1cb6fa8fda9fcde3441189f76ded1c57ebaceca2fe8aee364d19af"
+    }
+  ]
+}

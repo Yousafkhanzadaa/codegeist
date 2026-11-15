@@ -1,0 +1,43 @@
+{
+  "repository": "https://github.com/NousResearch/hermes-agent",
+  "buggyRevision": "c79e3fd0baf41c0adda616b73153eeaa8a4b8231",
+  "proposedFixedRevision": "097c9185aeb69cc302f660f1d5c8553e4fcbaedb",
+  "proposedFixPullRequest": "https://github.com/NousResearch/hermes-agent/pull/40763",
+  "fixMerged": false,
+  "sourceStatusCheckedOn": "2026-11-13",
+  "license": "MIT",
+  "files": {
+    "vendor/before/model_tools.py": {
+      "sha256": "2e0e2ac63392509028726665e23e91d35baa119f482a078c0d558843e4588717",
+      "gitBlobSha1": "9d04ada2d75857587206c9a28d7746a3889224b2"
+    },
+    "vendor/before/tools/__init__.py": {
+      "sha256": "f20d844ea0b00d501fe11de2f44768277257d0fa929bda2c39d7c08cc445a4c7",
+      "gitBlobSha1": "3214b979e51443f7d451dc9b9a9aac194d925f81"
+    },
+    "vendor/before/tools/registry.py": {
+      "sha256": "1fff28948e5714763c26279f40a0188b657243942f8ad8e157a672c453515aef",
+      "gitBlobSha1": "7bb92e85f960c2a8552122e04b81d0a82c255bd5"
+    },
+    "vendor/before/toolsets.py": {
+      "sha256": "4b4c011e824146354d490aa97a05027d83364e6babe7f136a72e8b4496dfedd2",
+      "gitBlobSha1": "10c5dbb0ca07c1c50d1641ae38c801b8b78a141c"
+    },
+    "vendor/fixed/model_tools.py": {
+      "sha256": "498604c586ae533782052976a13baa6a87102c48d1bba73551cfabb63e4c95c0",
+      "gitBlobSha1": "f6a77dfd2f394571d3d93617a9aba23724e15c90"
+    },
+    "vendor/fixed/tools/__init__.py": {
+      "sha256": "f20d844ea0b00d501fe11de2f44768277257d0fa929bda2c39d7c08cc445a4c7",
+      "gitBlobSha1": "3214b979e51443f7d451dc9b9a9aac194d925f81"
+    },
+    "vendor/fixed/tools/registry.py": {
+      "sha256": "1fff28948e5714763c26279f40a0188b657243942f8ad8e157a672c453515aef",
+      "gitBlobSha1": "7bb92e85f960c2a8552122e04b81d0a82c255bd5"
+    },
+    "vendor/fixed/toolsets.py": {
+      "sha256": "4b4c011e824146354d490aa97a05027d83364e6babe7f136a72e8b4496dfedd2",
+      "gitBlobSha1": "10c5dbb0ca07c1c50d1641ae38c801b8b78a141c"
+    }
+  }
+}

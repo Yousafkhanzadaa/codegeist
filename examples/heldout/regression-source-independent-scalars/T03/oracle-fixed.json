@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "id": "heldout-invoice-import-v1",
+  "assertionId": "invoice-import.preserves-customer-reference.v1",
+  "failureKind": "valid-import-reference-resolution",
+  "failureSite": "invoice-import.resolve-customer.v1",
+  "affected": {
+    "revision": "invoice-import-truncation-before-v1",
+    "command": [
+      "node",
+      "examples/heldout/adapter.mjs",
+      "affected",
+      "{input}"
+    ],
+    "files": [
+      {
+        "path": "examples/heldout/app.mjs",
+        "sha256": "e6d8f1796e1c7ececf94617c4d0569e1796308df65eba6430678872f923d516b"
+      },
+      {
+        "path": "examples/heldout/adapter.mjs",
+        "sha256": "ec2b3b35b48dff207c3eec3ff937ec81436ae15362283699331f8c8739cb809e"
+      }
+    ]
+  },
+  "limits": {
+    "timeoutMs": 5000,
+    "maxOutputBytes": 4096
+  },
+  "fixed": {
+    "revision": "invoice-import-exact-lookup-v1",
+    "command": [
+      "node",
+      "examples/heldout/adapter.mjs",
+      "fixed",
+      "{input}"
+    ],
+    "files": [
+      {
+        "path": "examples/heldout/app.mjs",
+        "sha256": "e6d8f1796e1c7ececf94617c4d0569e1796308df65eba6430678872f923d516b"
+      },
+      {
+        "path": "examples/heldout/adapter.mjs",
+        "sha256": "ec2b3b35b48dff207c3eec3ff937ec81436ae15362283699331f8c8739cb809e"
+      }
+    ]
+  }
+}

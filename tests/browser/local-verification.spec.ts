@@ -1,0 +1,66 @@
+import { expect, test } from '@playwright/test';
+import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { runVerification } from '../../local/protocol.mjs';
+
+test('real second-case generation, local application run, report binding and renewed human review', async ({ page }) => {
+  const directory = await mkdtemp(join(tmpdir(), 'reproshare-local-browser-'));
+  try {
+    await page.goto('/?demo=1');
+    await page.getByLabel('Try a synthetic example').selectOption('es-toolkit-deburr');
+    const source = await page.getByLabel('Source JSON', { exact: true }).inputValue();
+    await writeFile(join(directory, 'source.json'), source);
+    await page.getByRole('button', { name: 'Check this regression input', exact: true }).click();
+    await page.getByRole('radio').first().check();
+    await page.getByRole('checkbox', { name: 'This is the condition I want' }).check();
+    await page.getByRole('button', { name: 'Generate and verify' }).click();
+    await expect(page.getByRole('heading', { name: 'Reference condition retained; runner ready' })).toBeVisible();
+    await page.getByRole('button', { name: 'Review the output' }).click();
+    await expect(page.locator('.application-case-card')).toContainText('es-toolkit');
+    await expect(page.locator('.application-case-card')).toContainText('Forge has not executed es-toolkit');
+    const pendingDownload = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download check inputs' }).click();
+    const packagePath = join(directory, 'verification-inputs.json');
+    await (await pendingDownload).saveAs(packagePath);
+    const inputs = JSON.parse(await readFile(packagePath, 'utf8'));
+    expect(inputs).not.toHaveProperty('sourceJson');
+    const report = await runVerification({ packagePath, sourcePath: join(directory, 'source.json'),
+      oraclePath: resolve('vendor/second-case/oracle.json'), cwd: resolve('.'), allowCommand: true });
+    expect(report.verdict, report.failures.join(', ')).toBe('verified');
+    await page.getByRole('checkbox', { name: 'I reviewed field names and structure.' }).check();
+    await page.getByRole('checkbox', { name: 'I reviewed the fixture, report and test.' }).check();
+    await expect(page.getByRole('button', { name: 'Choose a destination' })).toBeEnabled();
+    const reportInput = page.getByLabel('Import local verification report');
+    const badReport = { ...report, fixtureHash: 'a'.repeat(64) };
+    await reportInput.setInputFiles({ name: 'wrong-report.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(badReport)) });
+    await expect(page.getByRole('alert')).toContainText('different source, fixture');
+    await expect(page.getByRole('heading', { name: 'Fix validated locally' })).toHaveCount(0);
+    await reportInput.setInputFiles({ name: 'local-report.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(report)) });
+    await expect(page.getByRole('heading', { name: 'Fix validated locally' })).toBeVisible();
+    await expect(page.getByRole('checkbox', { name: 'I reviewed field names and structure.' })).not.toBeChecked();
+    await expect(page.getByRole('checkbox', { name: 'I reviewed the fixture, report and test.' })).not.toBeChecked();
+    await expect(page.getByRole('button', { name: 'Choose a destination' })).toBeDisabled();
+    await expect(page.locator('.local-matrix tbody')).toContainText('Same failure');
+    await expect(page.locator('.application-case-card')).toContainText('Fix validated locally');
+    await expect(page.locator('.application-case-card')).not.toContainText('Runner ready—run application check locally');
+    await page.locator('.local-evidence-details > summary').first().click();
+    const receiptDownload = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download public execution receipt' }).click();
+    const receiptPath = join(directory, 'execution-receipt.json');
+    await (await receiptDownload).saveAs(receiptPath);
+    const receipt = JSON.parse(await readFile(receiptPath, 'utf8'));
+    expect(receipt).not.toHaveProperty('sourceHash');
+    expect(receipt).not.toHaveProperty('configurationHash');
+    expect(receipt).not.toHaveProperty('oracleHash');
+    const proof = resolve('artifacts/verification-upgrade/browser');
+    await mkdir(proof, { recursive: true });
+    await page.locator('.local-verification').screenshot({ path: join(proof, 'local-evidence.png') });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.getByRole('heading', { name: 'Fix validated locally' })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: join(proof, 'mobile-review.png'), fullPage: true });
+    await writeFile(join(proof, 'verification-inputs.json'), JSON.stringify(inputs, null, 2));
+    await writeFile(join(proof, 'local-report.json'), JSON.stringify(report, null, 2));
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});

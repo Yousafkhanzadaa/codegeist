@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "scope": "agent-authored acceptance tasks; not independent human evaluation or upstream vulnerability discovery",
+  "tasks": [
+    {
+      "id": "T01",
+      "fixture": "fixtures/T01.json",
+      "profile": "profile.json",
+      "expected": "reproduce",
+      "description": "Valid cross-entity import with 33-character customer IDs."
+    },
+    {
+      "id": "T02",
+      "fixture": "fixtures/T02.json",
+      "profile": "profile.json",
+      "expected": "reproduce",
+      "description": "Valid cross-entity import with 48-character customer IDs."
+    },
+    {
+      "id": "T03",
+      "fixture": "fixtures/T03.json",
+      "profile": "profile.json",
+      "expected": "reproduce",
+      "description": "Valid cross-entity import with 64-character customer IDs."
+    },
+    {
+      "id": "T04",
+      "fixture": "fixtures/T04.json",
+      "profile": "profile.json",
+      "expected": "refuse-original-passes",
+      "description": "Valid short-ID import has no selected application failure."
+    },
+    {
+      "id": "T05",
+      "fixture": "fixtures/T05.json",
+      "profile": "profile.json",
+      "expected": "refuse-invalid-source",
+      "description": "Invalid foreign key must be rejected rather than mistaken for reproduction."
+    },
+    {
+      "id": "T06",
+      "fixture": "fixtures/T06.json",
+      "profile": "profile-private-prerequisite.json",
+      "expected": "refuse-no-safe-variant",
+      "description": "A required private fictional token must change, but the app then rejects it. Refuse safely."
+    }
+  ]
+}

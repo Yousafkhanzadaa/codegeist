@@ -1,0 +1,40 @@
+# Local runtimes, dependencies and generated outputs
+.tools/
+node_modules/
+dist/
+.DS_Store
+test-results/
+playwright-report/
+__pycache__/
+*.py[cod]
+
+# Credentials and local editor/agent state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.codex/
+.agents/
+
+# Private live records, unpublished media and separate hosted-site checkout
+/artifacts/
+/judge-policy-site/
+
+# Local source-side Jira review transports and temporary generated results
+/examples/heldout/judge-*/
+/new-*/
+/.local-results/
+/my-private-*/
+/my-reviewed-*/
+
+# Internal entry drafts, operational history and strategy
+/docs/submission-copy.md
+/docs/judge-readiness.md
+/docs/research/
+/docs/implementation/
+/docs/verification.md
+/docs/external-mcp-verification.md
+/docs/history/
+/docs/demo.md
+/docs/recording-script.md

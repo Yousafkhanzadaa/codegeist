@@ -1,0 +1,18 @@
+{
+  "batchId": "be4e9481e8505fda4bfa5",
+  "customers": [
+    {
+      "externalId": "5afca51b9d85a83f63262f1840fcceed6",
+      "email": "case355e78679942@example.test"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "e2b33de581fbba2",
+      "customerExternalId": "5afca51b9d85a83f63262f1840fcceed6",
+      "amountCents": 129901,
+      "currency": "USD",
+      "dueDate": "2030-12-15"
+    }
+  ]
+}

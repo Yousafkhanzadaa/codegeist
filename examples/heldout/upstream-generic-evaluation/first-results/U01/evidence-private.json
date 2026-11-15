@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "kind": "reproshare-local-verification",
+  "sourceKind": "provided-local-source",
+  "configurationHash": "8497cf142a6c262fa39104b222cc344ab8e28df89e982708da57ad2884ac7271",
+  "sourceHash": "517cd594458bcecec075fb987625fc34bdda26cddb57851d3d16f4ecc9984807",
+  "ordinaryHash": "dedf601a58865079ebc80a8e79bc62ea359db49b504c8c9595db4fa8ab885237",
+  "fixtureHash": "dedf601a58865079ebc80a8e79bc62ea359db49b504c8c9595db4fa8ab885237",
+  "contractHash": "ba02f95b018e8a1408ac8b1e28d68dd00fcd8cdc94a40e23df678813bb2e73c9",
+  "oracleHash": "01dcd3c0aa024c90b53fa767839c082137b115592cf89d32abf6f403d666481c",
+  "runner": {
+    "revision": "reproshare-local-oracle-v2",
+    "sha256": "ea76a229678f0ce622ef608bd6e845e71423940f9b29805446bcb7ff5ce6215a",
+    "nodeVersion": "v24.22.3"
+  },
+  "adapters": {
+    "affected": {
+      "revision": "c79e3fd0baf41c0adda616b73153eeaa8a4b8231",
+      "files": [
+        {
+          "path": "vendor/hermes/oracle-adapter.mjs",
+          "sha256": "9f9720a7b768d43fb7aab76fe43cc0c225e751cdee1dddc9f5fffeabfb174035"
+        },
+        {
+          "path": "scripts/hermes-adapter.py",
+          "sha256": "fbd7badf678bbefe53fdb17a161adaa6f2762a4ff5014f6e7330809339f184e2"
+        },
+        {
+          "path": "vendor/hermes/provenance.json",
+          "sha256": "ccb720a33cd35e546198c9bd08fc80bea373fee83ec39e7f6ca5e9cfaa3a6206"
+        },
+        {
+          "path": "vendor/hermes/before/LICENSE",
+          "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6"
+        },
+        {
+          "path": "vendor/hermes/before/model_tools.py",
+          "sha256": "2e0e2ac63392509028726665e23e91d35baa119f482a078c0d558843e4588717"
+        },
+        {
+          "path": "vendor/hermes/before/toolsets.py",
+          "sha256": "4b4c011e824146354d490aa97a05027d83364e6babe7f136a72e8b4496dfedd2"
+        },
+        {
+          "path": "vendor/hermes/before/tools/__init__.py",
+          "sha256": "f20d844ea0b00d501fe11de2f44768277257d0fa929bda2c39d7c08cc445a4c7"
+        },
+        {
+          "path": "vendor/hermes/before/tools/registry.py",
+          "sha256": "1fff28948e5714763c26279f40a0188b657243942f8ad8e157a672c453515aef"
+        }
+      ]
+    },
+    "fixed": {
+      "revision": "097c9185aeb69cc302f660f1d5c8553e4fcbaedb",
+      "files": [
+        {
+          "path": "vendor/hermes/oracle-adapter.mjs",
+          "sha256": "9f9720a7b768d43fb7aab76fe43cc0c225e751cdee1dddc9f5fffeabfb174035"
+        },
+        {
+          "path": "scripts/hermes-adapter.py",
+          "sha256": "fbd7badf678bbefe53fdb17a161adaa6f2762a4ff5014f6e7330809339f184e2"
+        },
+        {
+          "path": "vendor/hermes/provenance.json",
+          "sha256": "ccb720a33cd35e546198c9bd08fc80bea373fee83ec39e7f6ca5e9cfaa3a6206"
+        },
+        {
+          "path": "vendor/hermes/fixed/LICENSE",
+          "sha256": "821556e6336796450ab852d375117b48a4887e71d255794fd6318d99982a5ab6"
+        },
+        {
+          "path": "vendor/hermes/fixed/model_tools.py",
+          "sha256": "498604c586ae533782052976a13baa6a87102c48d1bba73551cfabb63e4c95c0"
+        },
+        {
+          "path": "vendor/hermes/fixed/toolsets.py",
+          "sha256": "4b4c011e824146354d490aa97a05027d83364e6babe7f136a72e8b4496dfedd2"
+        },
+        {
+          "path": "vendor/hermes/fixed/tools/__init__.py",
+          "sha256": "f20d844ea0b00d501fe11de2f44768277257d0fa929bda2c39d7c08cc445a4c7"
+        },
+        {
+          "path": "vendor/hermes/fixed/tools/registry.py",
+          "sha256": "1fff28948e5714763c26279f40a0188b657243942f8ad8e157a672c453515aef"
+        }
+      ]
+    }
+  },
+  "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+  "failureKind": "integer-precision-collision",
+  "testSpecHash": "c09fd3c1cd9338678b2abada5e4d8ff7e46c779f86fe59736c15ffe47259b1ca",
+  "inputValidity": {
+    "original": true,
+    "ordinary": true,
+    "synthetic": true
+  },
+  "repetitions": 1,
+  "ordinaryControl": "preserves-failure",
+  "matrix": {
+    "original": {
+      "outcome": "fail",
+      "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+      "failureKind": "integer-precision-collision",
+      "matchedExpected": true
+    },
+    "ordinary": {
+      "outcome": "fail",
+      "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+      "failureKind": "integer-precision-collision",
+      "matchedExpected": true
+    },
+    "synthetic": {
+      "outcome": "fail",
+      "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+      "failureKind": "integer-precision-collision",
+      "matchedExpected": true
+    },
+    "fixedOriginal": {
+      "outcome": "pass",
+      "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+      "matchedExpected": true
+    },
+    "fixedOrdinary": {
+      "outcome": "pass",
+      "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+      "matchedExpected": true
+    },
+    "fixedSynthetic": {
+      "outcome": "pass",
+      "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+      "matchedExpected": true
+    }
+  },
+  "verdict": "verified",
+  "failures": [],
+  "scope": "local-self-report-declared-files-only",
+  "evidenceLevel": "fix-validated",
+  "evidenceHash": "c8f0e8029b6e40411b1472f3338193d7ac401d446d96d6d81d4c5266a01b9ec1"
+}

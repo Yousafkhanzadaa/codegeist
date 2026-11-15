@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "kind": "reproshare-known-upstream-generic-capability",
+  "startedAt": "2026-11-15T13:47:43.254Z",
+  "scope": "Known pinned upstream entry points, not whole customer applications, a blind study or user trials. Generic search only; no bespoke generator.",
+  "mode": "seen-task-regression-source-independent-scalars",
+  "engineHash": "198d6027f8eaa2adfaa5f451bf25200c04c6691d2f97317d38b577b2fbd2d589",
+  "freezeHash": "5b4f09d2a062947e169a0b524fdb2a7cbb0949e4d6437011320bbbb981389ee3",
+  "runtime": "v24.22.3",
+  "stages": "generation plus actual original/ordinary/synthetic and fixed local assertions; no portable or Jira lifecycle claim",
+  "tasks": [
+    {
+      "id": "U01",
+      "profileId": "hermes-integer-coercion",
+      "expected": "attempt-reproduction",
+      "sourceHash": "517cd594458bcecec075fb987625fc34bdda26cddb57851d3d16f4ecc9984807",
+      "profileHash": "94bfd5bc00109f5d52328fda3e2628d9a10d5c8899e0e8f90e879eabe0a0429a",
+      "outcomes": [
+        {
+          "stage": "generic-search",
+          "status": "candidate-found",
+          "summary": {
+            "version": 1,
+            "kind": "reproshare-search-summary",
+            "runs": 6,
+            "candidates": 3,
+            "invalidCandidates": 0,
+            "differentOutcomes": 2,
+            "minimizationChecks": 0,
+            "removedParts": 0,
+            "elapsedMs": 841,
+            "originalBytes": 124,
+            "fixtureBytes": 123,
+            "scope": "bounded-local-search-not-global-minimum",
+            "stoppedByBudget": false,
+            "decisions": [
+              "changed-values-preserved-declared-failure"
+            ],
+            "disclosures": [
+              "Object keys, required structure, public constants and selected constraints remain visible.",
+              "Number and date proposals use private source-independent entropy and public boundaries, not reversible offsets from original values. Equality and a necessary string length or calendar/number condition can remain visible.",
+              "Narrow public domains and the requirement to change values can still reveal information. Replacement is not an anonymity guarantee.",
+              "Boolean inversion is reversible; changed booleans do not hide their original value.",
+              "Matching declared assertion/site is bounded failure evidence, not proof of identical root cause."
+            ]
+          }
+        },
+        {
+          "stage": "application-verification",
+          "status": "verified",
+          "evidenceLevel": "fix-validated",
+          "matrix": {
+            "original": {
+              "outcome": "fail",
+              "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+              "failureKind": "integer-precision-collision",
+              "matchedExpected": true
+            },
+            "ordinary": {
+              "outcome": "pass",
+              "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+              "matchedExpected": true
+            },
+            "synthetic": {
+              "outcome": "fail",
+              "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+              "failureKind": "integer-precision-collision",
+              "matchedExpected": true
+            },
+            "fixedOriginal": {
+              "outcome": "pass",
+              "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+              "matchedExpected": true
+            },
+            "fixedOrdinary": {
+              "outcome": "pass",
+              "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+              "matchedExpected": true
+            },
+            "fixedSynthetic": {
+              "outcome": "pass",
+              "assertionId": "hermes.coerce-tool-args.exact-integer.v1",
+              "matchedExpected": true
+            }
+          },
+          "failures": []
+        }
+      ],
+      "privateScalarOverlap": false,
+      "status": "reproduced",
+      "elapsedMs": 1658
+    },
+    {
+      "id": "U02",
+      "profileId": "es-toolkit-deburr",
+      "expected": "attempt-reproduction",
+      "sourceHash": "fb8a20cee09c8bdbba75d824964b92d2d90c5f38697b132143f9f99ab67e867d",
+      "profileHash": "fbd45a5c574a979588bc66ca9d602cf2555ef7f46256cb4d3e2404639c6b639d",
+      "outcomes": [
+        {
+          "stage": "generic-search",
+          "status": "refused",
+          "code": "no-safe-failing-variant",
+          "lastProgress": {
+            "runs": 34,
+            "candidates": 32,
+            "invalidCandidates": 0,
+            "differentOutcomes": 31,
+            "minimizationChecks": 0,
+            "removedParts": 0,
+            "phase": "running",
+            "elapsedMs": 2390
+          }
+        }
+      ],
+      "status": "refused",
+      "elapsedMs": 2468
+    },
+    {
+      "id": "U03",
+      "profileId": "hermes-integer-coercion",
+      "expected": "refuse-original-passes",
+      "sourceHash": "6ba23c80d93c9d2bf2a4434c714a4758fba39429c7b1311a6910770fa486b308",
+      "profileHash": "94bfd5bc00109f5d52328fda3e2628d9a10d5c8899e0e8f90e879eabe0a0429a",
+      "outcomes": [
+        {
+          "stage": "generic-search",
+          "status": "refused",
+          "code": "original-failure-not-stable",
+          "lastProgress": {
+            "runs": 1,
+            "candidates": 0,
+            "invalidCandidates": 0,
+            "differentOutcomes": 0,
+            "minimizationChecks": 0,
+            "removedParts": 0,
+            "phase": "running",
+            "elapsedMs": 0
+          }
+        }
+      ],
+      "status": "refused",
+      "elapsedMs": 163,
+      "expectedNegativeOutcome": true
+    },
+    {
+      "id": "U04",
+      "profileId": "es-toolkit-deburr",
+      "expected": "refuse-original-passes",
+      "sourceHash": "b27a9ce43a96349cd42c9a321245985418a325bd1506ba940bd6e677f3c329ac",
+      "profileHash": "fbd45a5c574a979588bc66ca9d602cf2555ef7f46256cb4d3e2404639c6b639d",
+      "outcomes": [
+        {
+          "stage": "generic-search",
+          "status": "refused",
+          "code": "original-failure-not-stable",
+          "lastProgress": {
+            "runs": 1,
+            "candidates": 0,
+            "invalidCandidates": 0,
+            "differentOutcomes": 0,
+            "minimizationChecks": 0,
+            "removedParts": 0,
+            "phase": "running",
+            "elapsedMs": 0
+          }
+        }
+      ],
+      "status": "refused",
+      "elapsedMs": 94,
+      "expectedNegativeOutcome": true
+    },
+    {
+      "id": "U05",
+      "profileId": "hermes-integer-coercion",
+      "expected": "refuse-invalid-source",
+      "sourceHash": "b41f500347a978b2d93eb7c910e0bb51f015d66317d2ce7bf676980030f10249",
+      "profileHash": "94bfd5bc00109f5d52328fda3e2628d9a10d5c8899e0e8f90e879eabe0a0429a",
+      "outcomes": [
+        {
+          "stage": "generic-search",
+          "status": "refused",
+          "code": "original-input-invalid"
+        }
+      ],
+      "status": "refused",
+      "elapsedMs": 1,
+      "expectedNegativeOutcome": true
+    },
+    {
+      "id": "U06",
+      "profileId": "es-toolkit-deburr",
+      "expected": "refuse-invalid-source",
+      "sourceHash": "32cc49b75f5ddcb77fbe4f2834a768d4d31635dfac6070de95dcb9467b6ec2bd",
+      "profileHash": "fbd45a5c574a979588bc66ca9d602cf2555ef7f46256cb4d3e2404639c6b639d",
+      "outcomes": [
+        {
+          "stage": "generic-search",
+          "status": "refused",
+          "code": "original-input-invalid"
+        }
+      ],
+      "status": "refused",
+      "elapsedMs": 1,
+      "expectedNegativeOutcome": true
+    }
+  ],
+  "summary": {
+    "totalTasks": 6,
+    "positiveAttempted": 2,
+    "positiveReproduced": 1,
+    "positiveRefusedOrRejected": 1,
+    "negativeTasks": 4,
+    "negativeCorrectRefusals": 4,
+    "falseVerifiedNegatives": 0,
+    "unexpectedErrors": 0
+  },
+  "completedAt": "2026-11-15T13:47:47.644Z"
+}

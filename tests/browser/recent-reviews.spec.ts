@@ -1,0 +1,34 @@
+import { expect, test } from '@playwright/test';
+
+test('resuming a stored source-side review preserves artifacts and clears human approval without re-running execution', async ({ page }) => {
+  await page.goto('/?demo=1');
+  await page.getByLabel('Try a synthetic example').selectOption('precision');
+  await page.getByRole('button', { name: 'Find supported conditions' }).click();
+  await page.getByRole('radio').first().check();
+  await page.getByRole('checkbox', { name: 'This is the condition I want' }).check();
+  const preparation = page.waitForResponse(response => response.url().endsWith('/__reproshare/prepare'));
+  await page.getByRole('button', { name: 'Generate and verify' }).click();
+  const prepared = await (await preparation).json();
+  await page.getByRole('button', { name: 'Review the output' }).click();
+  await page.getByRole('checkbox', { name: 'I reviewed field names and structure.' }).check();
+  await page.getByRole('checkbox', { name: 'I reviewed the fixture, report and test.' }).check();
+  await page.getByRole('navigation', { name: 'Fixture preparation steps' }).getByRole('button', { name: /Source.*Choose an input/ }).click();
+  await page.locator('.recent-reviews > summary').click();
+  await expect(page.locator('.recent-reviews')).toContainText('does not re-run the application');
+  const rows = page.locator('.recent-reviews li');
+  await expect(rows.first()).toContainText(prepared.repro.title);
+  const resume = page.waitForResponse(response => response.url().endsWith('/__reproshare/resume'));
+  await rows.first().getByRole('button', { name: /Resume review/ }).click();
+  const resumed = await (await resume).json();
+  expect(resumed.reviewId).not.toBe(prepared.reviewId);
+  expect(resumed.repro.fixtureHash).toBe(prepared.repro.fixtureHash);
+  expect(resumed.repro.localVerification).toBeUndefined();
+  await expect(page.getByRole('heading', { name: 'Review the output', exact: true })).toBeVisible();
+  await expect(page.getByRole('checkbox', { name: 'I reviewed field names and structure.' })).not.toBeChecked();
+  await expect(page.getByRole('checkbox', { name: 'I reviewed the fixture, report and test.' })).not.toBeChecked();
+  await expect(page.getByRole('button', { name: 'Choose a destination' })).toBeDisabled();
+  await expect(page.locator('.evidence-progress')).toContainText('Data condition checked');
+  await expect(page.locator('.disclosure-review')).toContainText('Original values are unavailable here');
+  await expect(page.getByRole('button', { name: 'Download check inputs' })).toHaveCount(0);
+  await expect(page.locator('.local-verification')).toContainText('Connect a local service profile');
+});

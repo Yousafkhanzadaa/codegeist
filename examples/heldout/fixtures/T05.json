@@ -1,0 +1,34 @@
+{
+  "batchId": "fictional-echo-batch",
+  "customers": [
+    {
+      "externalId": "echo-customer-1-xxxxxxxxxxxxxxxxxxxxxxxx",
+      "email": "echo.one@example.test",
+      "name": "Fictional echo One"
+    },
+    {
+      "externalId": "echo-customer-2-xxxxxxxxxxxxxxxxxxxxxxxx",
+      "email": "echo.two@example.test",
+      "name": "Fictional echo Two"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "echo-invoice-1",
+      "customerExternalId": "missing-fictional-customer",
+      "amountCents": 129900,
+      "currency": "USD",
+      "dueDate": "2026-12-15",
+      "memo": "Fictional customer import note one"
+    },
+    {
+      "invoiceId": "echo-invoice-2",
+      "customerExternalId": "echo-customer-2-xxxxxxxxxxxxxxxxxxxxxxxx",
+      "amountCents": 45900,
+      "currency": "EUR",
+      "dueDate": "2026-12-20",
+      "memo": "Fictional customer import note two"
+    }
+  ],
+  "note": "Fictional authorised evaluation input; no real customer data."
+}

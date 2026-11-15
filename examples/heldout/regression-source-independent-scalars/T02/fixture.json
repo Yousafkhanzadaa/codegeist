@@ -1,0 +1,18 @@
+{
+  "batchId": "c4a1a4031da5cefe8b9a2",
+  "customers": [
+    {
+      "externalId": "e9e1b19b33aa5dc9a4a4841cff299884e25b4bd02c4ec708",
+      "email": "casedac165a9242b@example.test"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "952366b983b80f2",
+      "customerExternalId": "e9e1b19b33aa5dc9a4a4841cff299884e25b4bd02c4ec708",
+      "amountCents": 50538011,
+      "currency": "USD",
+      "dueDate": "2064-02-29"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "outcome": "environment-blocked-before-first-task",
+  "reason": "listen EPERM: operation not permitted 127.0.0.1",
+  "classification": "not an algorithm result; sandbox loopback socket unavailable",
+  "nextRun": "../first-http-evaluation/evaluation.json",
+  "action": "normal approval review permitted loopback-only authored HTTP tests"
+}

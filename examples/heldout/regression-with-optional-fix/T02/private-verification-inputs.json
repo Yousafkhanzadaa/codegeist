@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "kind": "reproshare-verification-inputs",
+  "configurationHash": "3ea6ee45bd40d81e256c0fd4156e6aaf197beee571abbfa5f209994473527067",
+  "sourceHash": "f0c0e731abe95d990d63934750d4fe53fec3d960dab65add47c94f580f169f09",
+  "fixtureHash": "04d5a77f7b61a754990def05aa8b66dde3dd32483b35d1fe0571f654d5398ade",
+  "ordinaryHash": "20bd72905a2e7f672ed22a163ccd48c15144e5445b0eab222bef91241a526bde",
+  "inputContractHash": "896c94ac9bb79ef425fe5ca327f6250a5a2bb3d4302ad8fefbb09e489fddd3ea",
+  "fixtureJson": "{\n  \"batchId\": \"f10f4c1b1a972d4b30b84\",\n  \"customers\": [\n    {\n      \"externalId\": \"f20bc285189fce7e158c190580e2c22dab05bdf8682d01e7\",\n      \"email\": \"casea10ace261085@example.test\"\n    }\n  ],\n  \"invoices\": [\n    {\n      \"invoiceId\": \"8a9f3154670b3de\",\n      \"customerExternalId\": \"f20bc285189fce7e158c190580e2c22dab05bdf8682d01e7\",\n      \"amountCents\": 129901,\n      \"currency\": \"USD\",\n      \"dueDate\": \"2030-12-15\"\n    }\n  ]\n}",
+  "ordinaryJson": "{\n  \"batchId\": \"c04d92f8\",\n  \"customers\": [\n    {\n      \"externalId\": \"2b5acfef\",\n      \"email\": \"caseaf2074369af7@example.test\",\n      \"name\": \"2fdc8fd3\"\n    },\n    {\n      \"externalId\": \"94be35c1\",\n      \"email\": \"casecdef3469e581@example.test\",\n      \"name\": \"aa7c6b98\"\n    }\n  ],\n  \"invoices\": [\n    {\n      \"invoiceId\": \"653f59b0\",\n      \"customerExternalId\": \"2b5acfef\",\n      \"amountCents\": 1,\n      \"currency\": \"USD\",\n      \"dueDate\": \"2026-12-22\",\n      \"memo\": \"2cd0a358\"\n    },\n    {\n      \"invoiceId\": \"cfd944f3\",\n      \"customerExternalId\": \"94be35c1\",\n      \"amountCents\": 1,\n      \"currency\": \"EUR\",\n      \"dueDate\": \"2026-12-27\",\n      \"memo\": \"eff2bb42\"\n    }\n  ],\n  \"note\": \"6f1f43d8\"\n}",
+  "inputContract": {
+    "version": 1,
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "batchId",
+        "customers",
+        "invoices"
+      ],
+      "properties": {
+        "batchId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "customers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "externalId",
+              "email"
+            ],
+            "properties": {
+              "externalId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            }
+          }
+        },
+        "invoices": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 40,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "invoiceId",
+              "customerExternalId",
+              "amountCents",
+              "currency",
+              "dueDate"
+            ],
+            "properties": {
+              "invoiceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "customerExternalId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "amountCents": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 100000000,
+                "integer": true
+              },
+              "currency": {
+                "type": "string",
+                "enum": [
+                  "USD",
+                  "EUR",
+                  "GBP"
+                ],
+                "public": true
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "memo": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            }
+          }
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "caseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    },
+    "relations": [
+      {
+        "left": "/invoices/0/customerExternalId",
+        "operator": "eq",
+        "right": "/customers/0/externalId"
+      }
+    ]
+  },
+  "verificationSpec": {
+    "version": 1,
+    "id": "heldout-invoice-import-v1",
+    "assertionId": "invoice-import.preserves-customer-reference.v1",
+    "failureKind": "valid-import-reference-resolution",
+    "failureSite": "invoice-import.resolve-customer.v1",
+    "affected": {
+      "revision": "invoice-import-truncation-before-v1",
+      "files": [
+        {
+          "path": "examples/heldout/app.mjs",
+          "sha256": "e6d8f1796e1c7ececf94617c4d0569e1796308df65eba6430678872f923d516b"
+        },
+        {
+          "path": "examples/heldout/adapter.mjs",
+          "sha256": "ec2b3b35b48dff207c3eec3ff937ec81436ae15362283699331f8c8739cb809e"
+        }
+      ]
+    }
+  },
+  "testSpecHash": "83d53673b88e6d12895c34581ef1ad843c62c7cb61445794a571ae42429e4b7b"
+}

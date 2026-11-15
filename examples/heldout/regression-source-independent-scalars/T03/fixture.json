@@ -1,0 +1,18 @@
+{
+  "batchId": "9d0575d2a7b6db869f03df1",
+  "customers": [
+    {
+      "externalId": "50371cc0aa0da8e2ce78b3da42870eefcd8741314dab97fa87a6435eb467d104",
+      "email": "caseb549ee50e00b@example.test"
+    }
+  ],
+  "invoices": [
+    {
+      "invoiceId": "d857f97682b190ba3",
+      "customerExternalId": "50371cc0aa0da8e2ce78b3da42870eefcd8741314dab97fa87a6435eb467d104",
+      "amountCents": 81379453,
+      "currency": "USD",
+      "dueDate": "2020-02-29"
+    }
+  ]
+}

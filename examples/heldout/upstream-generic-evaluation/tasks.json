@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "scope": "Known public upstream generic-engine capability, not a blind or independently selected upstream benchmark. No bespoke generators used.",
+  "tasks": [
+    {
+      "id": "U01",
+      "profile": "profiles/hermes.json",
+      "fixture": "fixtures/U01.json",
+      "expected": "attempt-reproduction",
+      "description": "Public Hermes integer-collision regression."
+    },
+    {
+      "id": "U02",
+      "profile": "profiles/deburr.json",
+      "fixture": "fixtures/U02.json",
+      "expected": "attempt-reproduction",
+      "description": "Public es-toolkit combining-mark regression."
+    },
+    {
+      "id": "U03",
+      "profile": "profiles/hermes.json",
+      "fixture": "fixtures/U03.json",
+      "expected": "refuse-original-passes",
+      "description": "Valid exactly representable integer arguments."
+    },
+    {
+      "id": "U04",
+      "profile": "profiles/deburr.json",
+      "fixture": "fixtures/U04.json",
+      "expected": "refuse-original-passes",
+      "description": "Ordinary ASCII contains no selected failure."
+    },
+    {
+      "id": "U05",
+      "profile": "profiles/hermes.json",
+      "fixture": "fixtures/U05.json",
+      "expected": "refuse-invalid-source",
+      "description": "Wrong JSON type must not count as a reproduced defect."
+    },
+    {
+      "id": "U06",
+      "profile": "profiles/deburr.json",
+      "fixture": "fixtures/U06.json",
+      "expected": "refuse-invalid-source",
+      "description": "Undeclared field violates the explicit input contract."
+    }
+  ]
+}

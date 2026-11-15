@@ -1,0 +1,22 @@
+{
+  "customer": {
+    "name": "Fictional Private Customer",
+    "email": "maya@fictional-customer.example"
+  },
+  "orders": [
+    {
+      "orderId": "9007199254740992",
+      "tenantId": "private-tenant-681",
+      "amount": 82.5,
+      "memo": "Private order details alpha"
+    },
+    {
+      "orderId": "9007199254740993",
+      "tenantId": "private-tenant-681",
+      "amount": 149.25,
+      "memo": "Private order details beta"
+    }
+  ],
+  "enabled": true,
+  "cursor": null
+}

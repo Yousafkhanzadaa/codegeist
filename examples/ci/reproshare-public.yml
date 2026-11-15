@@ -1,0 +1,68 @@
+# TEMPLATE ONLY. Not installed or executed in a GitHub account.
+# Copy into a new/authorised repository after reviewing the public inputs,
+# workflow and action versions. Pin actions to reviewed commit SHAs for an
+# organisation-controlled trusted-builder policy.
+name: ReproShare public synthetic replay
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24.22.3'
+          package-manager-cache: false
+      # ci-public/ contains only the approved fixture, reviewed runner, public
+      # receipt and public test spec. Never copy workflow-review.json, private
+      # local reports, original inputs or service credentials into this folder.
+      - name: Run reviewed synthetic-only application assertion
+        run: node ci-public/application-reproducer.mjs --allow-command ci-public/fixture.json > ci-public/recipient-result.json
+      - name: Declare exact job context without shell interpolation
+        env:
+          CI_REPOSITORY: ${{ github.repository }}
+          CI_COMMIT: ${{ github.sha }}
+          CI_RUN_ID: ${{ github.run_id }}
+          CI_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          node --input-type=module <<'JS'
+          import {writeFile} from 'node:fs/promises';
+          const job={provider:'github-actions',repository:process.env.CI_REPOSITORY,
+            commit:process.env.CI_COMMIT,workflow:'.github/workflows/reproshare-public.yml',
+            runId:process.env.CI_RUN_ID,runAttempt:Number(process.env.CI_RUN_ATTEMPT),jobId:'reproduce-public'};
+          await writeFile('ci-public/job.json',JSON.stringify(job,null,2),{flag:'wx'});
+          JS
+      - name: Bind public artifacts and declared application file build
+        run: |
+          node scripts/reproshare-ci.mjs manifest --public-receipt ci-public/public-verification.json \
+            --fixture ci-public/fixture.json --runner ci-public/application-reproducer.mjs \
+            --test-spec ci-public/verification-spec.json --job ci-public/job.json \
+            --out ci-public/artifact-manifest.json
+      # Official replacement for new attest-build-provenance integrations.
+      # Default mode emits SLSA build provenance. No custom execution claim.
+      - name: Attest manifest provenance with GitHub OIDC
+        uses: actions/attest@v4
+        with:
+          subject-path: ci-public/artifact-manifest.json
+          create-storage-record: false
+      - uses: actions/upload-artifact@v7
+        with:
+          name: reproshare-public-replay
+          if-no-files-found: error
+          path: |
+            ci-public/artifact-manifest.json
+            ci-public/public-verification.json
+            ci-public/verification-spec.json
+            ci-public/application-reproducer.mjs
+            ci-public/fixture.json
+            ci-public/recipient-result.json

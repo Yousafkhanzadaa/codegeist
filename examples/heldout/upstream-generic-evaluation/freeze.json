@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "scope": "predeclared capability matrix against known upstream fixtures; not first-seen input research",
+  "files": [
+    {
+      "path": "engine-snapshot/workflow.mjs",
+      "sha256": "b5031acb0c6e54ae19b64be19b5d1f87e81fbc5d785954d0a3f8f9127eb73a9e"
+    },
+    {
+      "path": "engine-snapshot/protocol.mjs",
+      "sha256": "3156487d9da8f41b782a7a85b626b2201ded5f90207ded0d31f5cabe1a1a05bf"
+    },
+    {
+      "path": "engine-snapshot/json.mjs",
+      "sha256": "f27efea1292f0074f94749b303ae129bfc7d938af91d9c97ee648246c9b90f48"
+    },
+    {
+      "path": "engine-snapshot/input-contract.mjs",
+      "sha256": "778f3c6ac3192526bbc0f11a8f537a587bdcd9a2a3240e07b81869f066524242"
+    },
+    {
+      "path": "fixtures/U01.json",
+      "sha256": "517cd594458bcecec075fb987625fc34bdda26cddb57851d3d16f4ecc9984807"
+    },
+    {
+      "path": "fixtures/U02.json",
+      "sha256": "fb8a20cee09c8bdbba75d824964b92d2d90c5f38697b132143f9f99ab67e867d"
+    },
+    {
+      "path": "fixtures/U03.json",
+      "sha256": "6ba23c80d93c9d2bf2a4434c714a4758fba39429c7b1311a6910770fa486b308"
+    },
+    {
+      "path": "fixtures/U04.json",
+      "sha256": "b27a9ce43a96349cd42c9a321245985418a325bd1506ba940bd6e677f3c329ac"
+    },
+    {
+      "path": "fixtures/U05.json",
+      "sha256": "b41f500347a978b2d93eb7c910e0bb51f015d66317d2ce7bf676980030f10249"
+    },
+    {
+      "path": "fixtures/U06.json",
+      "sha256": "32cc49b75f5ddcb77fbe4f2834a768d4d31635dfac6070de95dcb9467b6ec2bd"
+    },
+    {
+      "path": "profiles/deburr.json",
+      "sha256": "6bdd72582ba0c472d135bc32781f551823a19f4aa2ebd4499234b9f0819ce3a3"
+    },
+    {
+      "path": "profiles/hermes.json",
+      "sha256": "ef016b02757960b106c65334070aec0d729e13efff6df9abc958ffdaec4d5e75"
+    },
+    {
+      "path": "tasks.json",
+      "sha256": "7a8c2f03d2413d6a70f4d59cb6695a2704e4771656fece7e6fb2757a5da194ba"
+    }
+  ]
+}

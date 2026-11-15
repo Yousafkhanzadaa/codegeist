@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "description": "Exact engine/runtime snapshot for first-seen acceptance evaluation. Snapshot does not include product changes made after freeze.",
+  "files": [
+    {
+      "path": "engine-snapshot/workflow.mjs",
+      "sha256": "0c31d8017533e83032215001d8b68e76eaf673b2dbe86dbc8dd43b5d2ebc63f1"
+    },
+    {
+      "path": "engine-snapshot/protocol.mjs",
+      "sha256": "a08933b48c28071c6162670887cc8651f306f513d4ee00e51c9639494ff65180"
+    },
+    {
+      "path": "engine-snapshot/json.mjs",
+      "sha256": "f27efea1292f0074f94749b303ae129bfc7d938af91d9c97ee648246c9b90f48"
+    },
+    {
+      "path": "engine-snapshot/input-contract.mjs",
+      "sha256": "778f3c6ac3192526bbc0f11a8f537a587bdcd9a2a3240e07b81869f066524242"
+    }
+  ]
+}

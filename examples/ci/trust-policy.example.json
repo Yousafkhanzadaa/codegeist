@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "kind": "reproshare-ci-trust-policy",
+  "keyId": "REPLACE_WITH_SEPARATELY_TRUSTED_SIGNER",
+  "publicKeyPem": "REPLACE_WITH_PUBLIC_KEY_OBTAINED_INDEPENDENTLY_OF_THE_SIGNED_RECEIPT",
+  "expectedJob": {
+    "provider": "github-actions",
+    "repository": "REPLACE_OWNER/REPLACE_REPO",
+    "commit": "REPLACE_WITH_EXPECTED_40_CHARACTER_COMMIT",
+    "workflow": ".github/workflows/reproshare-public.yml",
+    "runId": "REPLACE_WITH_EXPECTED_RUN_ID",
+    "runAttempt": 1,
+    "jobId": "reproduce-public"
+  },
+  "expectedBuild": {
+    "scope": "declared-affected-application-files",
+    "revision": "REPLACE_WITH_REVIEWED_APPLICATION_REVISION",
+    "sha256": "REPLACE_WITH_SHA256_OF_CANONICAL_PREDECLARED_AFFECTED_FILE_BINDING"
+  }
+}

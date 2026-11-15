@@ -1,0 +1,40 @@
+import { expect, test } from '@playwright/test';
+
+test('Hermes sample prepares a runner without claiming application execution and source edits clear its binding', async ({ page }) => {
+  await page.goto('/?demo=1');
+  await page.getByLabel('Try a synthetic example').selectOption('hermes-integer-coercion');
+  await expect(page.getByRole('heading', { name: 'Real application regression', exact: true })).toBeVisible();
+  await expect(page.getByLabel('Expected behavior')).toHaveValue(/Hermes.*signed 64-bit/i);
+  await expect(page.getByLabel('Observed behavior')).toHaveValue(/affected Hermes revision/i);
+  await page.getByRole('button', { name: 'Check this regression input', exact: true }).click();
+  await page.getByRole('radio').first().check();
+  await page.getByRole('checkbox', { name: 'This is the condition I want' }).check();
+  await page.locator('.seed-details > summary').click();
+  await page.getByLabel('Generation seed').fill('hermes-browser-regression');
+  const preparation = page.waitForRequest(request => request.url().endsWith('/__reproshare/prepare'));
+  await page.getByRole('button', { name: 'Generate and verify' }).click();
+  expect((await preparation).postDataJSON()).toMatchObject({ applicationCaseId: 'hermes-integer-coercion', seed: 'hermes-browser-regression' });
+  await expect(page.getByRole('heading', { name: 'Reference condition retained; runner ready' })).toBeVisible();
+  await page.getByRole('button', { name: 'Review the output' }).click();
+  const applicationCard = page.locator('.application-case-card');
+  await expect(applicationCard).toContainText('Runner ready—run application check locally');
+  await expect(applicationCard).toContainText('Forge has not executed Hermes');
+  await expect(applicationCard).toContainText('coerce_tool_args');
+  await expect(applicationCard).toContainText('no network or API key');
+  await expect(page.getByRole('button', { name: 'Choose a destination' })).toBeDisabled();
+
+  await page.getByRole('navigation', { name: 'Fixture preparation steps' }).getByRole('button', { name: /Source.*Choose an input/ }).click();
+  const source = page.getByLabel('Source JSON', { exact: true });
+  await source.fill(`${await source.inputValue()}\n`);
+  await expect(page.locator('.application-case-intake')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /Review.*Inspect the fixture/ })).toBeDisabled();
+  await page.getByRole('button', { name: 'Find supported conditions', exact: true }).click();
+  await page.getByRole('radio').first().check();
+  await page.getByRole('checkbox', { name: 'This is the condition I want' }).check();
+  const ordinaryPreparation = page.waitForRequest(request => request.url().endsWith('/__reproshare/prepare'));
+  await page.getByRole('button', { name: 'Generate and verify' }).click();
+  expect((await ordinaryPreparation).postDataJSON()).not.toHaveProperty('applicationCaseId');
+  await expect(page.getByRole('heading', { name: 'The condition survives replacement' })).toBeVisible();
+  await page.getByRole('button', { name: 'Review the output' }).click();
+  await expect(page.locator('.application-case-card')).toHaveCount(0);
+});

@@ -1,0 +1,56 @@
+modules:
+  jira:issuePanel:
+    - key: reproshare-issue-panel
+      resource: main
+      resolver:
+        function: resolver
+      title: ReproShare
+      icon: resource:main;icon.svg
+  function:
+    - key: resolver
+      handler: index.handler
+    - key: approved-repro
+      handler: index.getApprovedReproducer
+    - key: ai-worker
+      handler: index.runAiJob
+      timeoutSeconds: 120
+  consumer:
+    - key: ai-jobs
+      queue: reproshare-ai-queue
+      function: ai-worker
+  llm:
+    - key: reproshare-ai
+      model:
+        - claude
+  rovo:mcp:
+    - key: reproshare-mcp
+      name: ReproShare
+      tools:
+        - get-approved-reproducer
+  action:
+    - key: get-approved-reproducer
+      name: Get approved reproducer
+      function: approved-repro
+      actionVerb: GET
+      description: Read the approved synthetic example and runnable checks attached to
+        an engineering Jira issue. Checks current user permissions and file
+        integrity. Does not return the private customer report.
+      inputs:
+        issueKey:
+          title: Engineering issue key
+          type: string
+          required: true
+          description: The key of the engineering issue containing the approved synthetic
+            example, such as DEV-12.
+resources:
+  - key: main
+    path: ui/dist
+permissions:
+  scopes:
+    - read:jira-work
+    - write:jira-work
+    - storage:app
+app:
+  id: ari:cloud:ecosystem::app/9084b288-4229-48c6-940f-556f165a3e20
+  runtime:
+    name: nodejs24.x
